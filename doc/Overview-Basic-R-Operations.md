@@ -51,7 +51,7 @@ Help for anything that has 'unique' in its name:
 ```R 
 ?? unique
 ```
- 
+
 # Load and unload data
 
 Set current directory:
@@ -59,12 +59,12 @@ Set current directory:
 ```R
 > setwd('<your root>/c16lv_R_lab')
 ```
- 
+
 Read from local CSV file:
 
 ```R 
 > d <- read.csv('data/c16lv_example_sqlstat.csv')
-``` 
+```
 
 Or remote CSV file over HTTP:
 
@@ -100,7 +100,7 @@ Let’s explore data in our data frame.
  $ DISK_READS : int  0 50223 92721 14 3353016 363 21 303 0 766121 ...
  $ EXECUTIONS : int  1358884 149767 12205 411 723 635955 635225 262426 8297 2633287 ...
  $ PARSE_CALLS: int  1119212 145798 4342 163 644 12180 11131 22767 8297 15263 ...
- ```
+```
 
 This is similar to **sqlplus DESCRIBE** command.
 
@@ -259,7 +259,7 @@ For example:
 > head(d$BUFFER_GETS)
 [1] 32790320 14179140 30702119 14361289 35670269 15784234
 ```
- 
+
 ## SELECT specific rows
 
 Since R keeps data in "tables" (aka: **data frames**), you can run various “SELECT” commands to extract only the data that you are interested in.
@@ -285,7 +285,7 @@ or:
 1 0g949bwd9dd6s          0
 3 72g46f0rypu1v      92721    
 5 8ahn83nwdmgnk    3353016
-``` 
+```
 
 Here is a basic syntax for your reference:
 
@@ -299,7 +299,7 @@ R has a number of helper functions that return row numbers of "qualifying rows",
 > grep('08-25 09:00', d$TS)
  [1] 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57
 ```
- 
+
 You can use such functions to select only the matching rows out of the data frame, i.e.:
  
 ```R 
@@ -334,7 +334,7 @@ Basic syntax:
 
 ```R
 dataframe[Vector with TRUE/FALSE for ALL rows, ]
-``` 
+```
 
 Creating such vectors for R data frames is very easy. Since R "vectorizes" all operations and all R columns are "vectors", all that you need to do is create a *logical condition* involving data frame column (or multiple columns).
 
@@ -344,7 +344,7 @@ I.e. let's create a logical vector that marks rows as TRUE if d$SQL_ID == "0g949
 > head(d$SQL_ID == "0g949bwd9dd6s")
 [1]  TRUE FALSE FALSE FALSE FALSE FALSE
 ```
- 
+
 We can then use it as a row filter for our data frame:
 
 ```R
@@ -450,6 +450,7 @@ Error: could not find function "is.Date"
 A few basic R data types are represented in the table below:
 
 | Data type | R data type name | Examples | Comments |
+|---|---|---|---|
 | Integers | integer | 1, 100 | Might not *fit* large numbers - use 'numeric' instead |
 | (Floating point) numbers | numeric | 1, 100.45 | Can 'support' both 'integers' and 'floating point numbers' |
 | Character strings | character | 'READ' | |
@@ -625,7 +626,7 @@ i.e.:
 ```R
 a <- 1
 ```
- 
+
 You can also use "traditional" **=** assignment operator:
 
 ```R
@@ -641,7 +642,7 @@ The important thing to remember is that R operations are vectorized, that is, 
 ```R
   d$DISK_READS <- d$DISK_READS / 2
 ```
- 
+
 will divide each individual value of DISK_READS column by 2.
 
 ## How to copy or save data
@@ -650,14 +651,14 @@ will divide each individual value of DISK_READS column by 2.
  
 ```R 
 > d1 <- d
-``` 
+```
 
 Or only a single column:
  
 ```R  
 > buffer_gets <- d$BUFFER_GETS
-``` 
- 
+```
+
 Despite its simplicity, this is one of the most useful commands for data exploration.
 
 Make a practice to always save the data before changing it, so that you have an easy rollback.
@@ -667,7 +668,7 @@ Make a practice to always save the data before changing it, so that you have an 
 ```R 
 > d$LOGICAL_READS <- NULL
 ```
- 
+
 ## Other simple data modifications
  
 ```R 
@@ -677,7 +678,7 @@ Make a practice to always save the data before changing it, so that you have an 
  
 > d$DISK_READS_CATEGORY <- ifelse(d$DISK_READS >= 1000, 'LARGE', 'SMALL')
 ```
- 
+
 ## "Analytic" functions
 
 **ddply** command in **plyr** package allows to run commands on R data frames that are similar to ORACLE analytic functions, such as:
@@ -739,7 +740,7 @@ top_n <- function(group_by, obs, top_n=5, data=d) {
    return(data)
 }
 ```
- 
+
 Here is how we would use it.
 
 Our original data: 
@@ -754,8 +755,8 @@ cjrrg729xjxs0 ddqma9ku89b00 g5wp6qf3uu12p gf9x09u2f9xwn kts18nwzj82hk
           166           166            81           166           156
 r15qdw8rj30dz rn7hbx3xgbv0z sfsg35rcc3zhf tff6bbwan4jqq wmrpbrd8mm88a
           166           166           166           166           166
-``` 
- 
+```
+
 And modified data after running top_n() function:
  
 ```R 

@@ -47,8 +47,9 @@ ggplot(d, aes()) +geom +”prettifications”
 
 where:
 
-|---|---|
+| | |
 | d | a “data frame” with data to graph |
+|---|---|
 | aes() | “Aesthetics”, or mappings of data elements to a visual plain, such as X/Y location, size, color etc |
 | geom() | Plot type, such as “bar”, “area” or “line” |
 | “Prettifications” | Various things that make graphs “prettier”, such as colors, scales or labels
@@ -68,7 +69,9 @@ They can be also “loaded” directly from databases, i.e.:
 ```R
 library(ROracle)
 
-odrv <- dbDriver("Oracle") conn <- dbConnect(odrv, user, passwd, tns) d <- dbGetQuery(conn, sql, binds)
+odrv <- dbDriver("Oracle") 
+conn <- dbConnect(odrv, user, passwd, tns)
+ d <- dbGetQuery(conn, sql, binds)
 ```
 
 # What is aes() or “visual aesthetics” ?

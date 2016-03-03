@@ -47,9 +47,9 @@ ggplot(d, aes()) +geom +”prettifications”
 
 where:
 
-| | |
-| d | a “data frame” with data to graph |
+| Component | Use |
 |---|---|
+| d | a “data frame” with data to graph |
 | aes() | “Aesthetics”, or mappings of data elements to a visual plain, such as X/Y location, size, color etc |
 | geom() | Plot type, such as “bar”, “area” or “line” |
 | “Prettifications” | Various things that make graphs “prettier”, such as colors, scales or labels

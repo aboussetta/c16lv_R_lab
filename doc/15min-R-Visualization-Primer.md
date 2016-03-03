@@ -106,58 +106,66 @@ ggplot(d, aes(x=PARSE_CALLS, y=EXECUTIONS, color=SQL_ID)) + geom_point()
 ```R
 # times as in "time series"
 times('SQL_ID', y='EXECUTIONS')
-``` 
+```
  
 ## Adjust the number of displayed categories
  
-```R 
+```R
 times('SQL_ID', y='EXECUTIONS', top_n=2)
-``` 
+```
  
 ## Change colors
  
-```R 
+```R
 p + scale_fill_brewer(palette='Spectral')
-``` 
+```
  
 ## Change plot type
  
 ```R
 times('SQL_ID', y='EXECUTIONS', geom="line")
-``` 
+```
  
 ## Try "percentage" graph
  
-```R 
+```R
 times('SQL_ID', y='EXECUTIONS', pct=TRUE)
-``` 
+```
  
 ## Add Facets
  
-```R 
+```R
 times('SQL_ID', y='EXECUTIONS', facet=TRUE)
-``` 
+```
  
 ## Add “highlight” box
 
-```R 
-# Set “highlight interval”
+Set “highlight interval”:
+
+```R
 I_MIN <- as.POSIXct('2013-08-27 00:30:00')
 I_MAX <- as.POSIXct('2013-08-27 12:30:00')
+```
 
-# And, Visualize 
+And, Visualize:
+
+```R
 times('SQL_ID', y='EXECUTIONS', color="yellowgreen", facet=TRUE) + hbox(color="red")
-```  
+```
 
 ## Correlate to event
 
 I.e. look for unusual spikes during “interesting” time interval.
 
+Define “interesting” time interval:
+
 ```R 
-# Define “interesting” time interval
 I_MIN <- as.POSIXct('2013-08-27 23:30:00')
 I_MAX <- as.POSIXct('2013-08-28 00:30:00')
+```
 
-# And, Visualize 
+And, Visualize:
+
+```R
 times('SQL_ID', y='DISK_READS', color="lightblue", facet=TRUE, find_spikes=T) + hbox(color="red")
 ```

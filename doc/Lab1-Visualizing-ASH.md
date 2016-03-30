@@ -1,11 +1,18 @@
 # Episode 1 - Visualizing ASH
 
-## Overview
+# Overview
+
+A typical use for ASH visualizations is to investigate performance problems. A good ASH visualization 
+can be very helpful in answering questions, such as:
+
+**WTF happened to my database 20 minutes ago ?**
+
+ASH (time series) visualizations should be familiar to most ORACLE DBAs as they are what Enterprise Manager typically displays.
 
 ## Style note
 
-You may see a slightly different display style while executing ggplot examples, due to environment settings.
-If you want visual style to follow the document, define these “theme elements”:
+You may see a slightly different display style while executing the following ggplot examples (due to your environment settings).
+If you want visual style to be exactly as in this document, define “theme elements”:
 
 ```R
 mytheme <- theme_minimal() +theme (

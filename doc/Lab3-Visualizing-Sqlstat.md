@@ -289,7 +289,11 @@ It's very similar to a boxplot but also shows *"the shape"* (or: *density*) of d
 To transform the latest plot to a violin plot, just replace **geom_boxplot()** with **geom_violin()**:
 
 ```R
-ggplot(d1, aes(x=TOP_SQLS, y=GETS_PER_EXEC, fill=TOP_SQLS)) + geom_violin() + scale_y_continuous(labels=comma) +theme_minimal() +ylab("Gets per execution") +ggtitle("Most wildly varying SQLs by gets/per/execution") +coord_flip()
+p <- ggplot(d1, aes(x=TOP_SQLS, y=GETS_PER_EXEC, fill=TOP_SQLS)) + geom_violin() 
+p <- p + scale_y_continuous(labels=comma) +theme_minimal() 
+p <- p +ylab("Gets per execution") +ggtitle("Most wildly varying SQLs by gets/per/execution") +coord_flip()
+
+p
 ```
 
 ![Violin plot](/images/lab3-violin-plot.png)

@@ -16,8 +16,10 @@ d <- read.csv('data/c16lv_example_sqlstat.csv')
 d$TS <- as.POSIXct(d$TS)
 ```
 
-The display style of examples may be slightly different than what is in this document.
-If you want the style to be exactly the same, define these “theme elements”:
+## Style note
+
+The display style of examples may be slightly different than what you see in this document, due to environment settings.
+If you want visual style to follow the document, define these “theme elements”:
 
 ```R
 mytheme <- theme_minimal() +theme (
@@ -31,7 +33,7 @@ mytheme <- theme_minimal() +theme (
 )
 ```
 
-And then add them at the end of each ggplot command, i.e.:
+And then add **+mytheme** at the end of each ggplot command, i.e.:
 
 ```R
 ggplot(d, aes(x=TS, y=BUFFER_GETS)) +geom_point() +mytheme

@@ -7,6 +7,8 @@ Hands-on labs
 
 IOUG Collaborate 2016, Las Vegas NV #C16LV
 
+[Presentation](http://www.slideshare.net/maxymkharchenko/visualizing-oracle-performance-data-with-r-c16lv)
+
 ## Contents
 
 ### R/ggplot overview
